@@ -27,12 +27,17 @@ if start_button:
     while True:
         ret, img = cap.read()
 
+        if not ret:
+            break
+
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         results = model(img)
-        frame.image(results[0].plot())
+        frame.image(results[0].plot(), use_column_width=True)
 
         if stop_button:
             break
 
     cap.release()
     cv2.destroyAllWindows()
+
+    frame.image('./cam_thumbnail.jpeg', use_column_width=True)

@@ -24,7 +24,7 @@ with col2:
 if start_button:
     cap = cv2.VideoCapture(0)
 
-    while True:
+    while cap.isOpened():
         ret, img = cap.read()
 
         if not ret:
